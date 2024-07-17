@@ -1,0 +1,50 @@
+# 3 Adapters passed into PFSense VM via VirtualBox
+
+Adapter 1*: WAN | Assigned IP-Address via DHCP from our ISP
+
+Adapter 2**: LAN | Assigned a Static IP-Address  of: 192.168.5.1 in Pfsense
+
+Adapter 3***: OPT | Assigned a Static IP Address of: 192.168.10.1 in Pfsense
+
+# PFSense Assignments/DHCP Configuration
+
+
+Adapter 1* : WAN (em0) | Ipv4 Configuration Type = DHCP | Enabled
+	
+	We want WAN (em0) to receive an address from our ISP via DHCP which was: 10.0.2.15/24
+	Subnet mask: 255.255.255.0
+
+Adapter 2** : LAN (em0) | Ipv4 Configuration Type = Static | Enabled
+	
+	We want LAN (em1) to be a static ip address of: 192.168.1.1/24
+	Subnet mask: 255.255.255.0
+
+	DHCP Config:
+	In networking, it is typical to have other networking hardware such as access points, unmanaged/managed Switches which will need addressing that 
+	we don't ever want to change so for these network appliances we can use any address from: 192.168.1.2 - 192.168.1.9 | 7 Devices that have
+	static ip addressing for ease of management as these addresses will be purposely left out of our DHCP Address pool.
+
+	Subnet: 192.168.1.0
+	Subnet range: 192.168.1.0 - 192.168.1.254
+	Address pool range: 192.168.1.10 - 192.168.1.254
+	Gateway: 192.168.1.1
+
+Adapter 3** : OFFICE (em1) | Ipv4 Configuration Type = Static | Enabled
+
+	NOTE: OPT was renamed to OFFICE in PFSense and a VLAN named OFFICE was assigned to this interface (em1) 
+	
+	We want LAN (em1) to be a static ip address of: 192.168.5.1/24
+	Subnet mask: 255.255.255.0
+
+	DHCP Config:
+	In networking it is typical to have other networking hardware such as access points, unmanaged/managed Switches which will need addressing that 
+	we don't ever want to change so for these network appliances we can use any address from: 192.168.1.2 - 192.168.1.9 | 7 Devices that have
+	static ip assignments for ease of management as these addresses will be purposely left out of our DHCP Address pool.
+
+	Subnet: 192.168.5.0
+	Subnet range: 192.168.5.0 - 192.168.5.254
+	Address pool range: 192.168.5.10 - 192.168.5.254
+	Gateway: 192.168.5.1
+
+	
+	
