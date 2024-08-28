@@ -1,11 +1,14 @@
-<h1>🌐 PFSense Lab </h1>
+<h1>🔗 PFSense Lab </h1>
 
-[![YouTube](http://i.ytimg.com/vi/mIEBfNq9spo/hqdefault.jpg)](https://www.youtube.com/watch?v=mIEBfNq9spo)
 <h3>Project Overview</h3>
 
 Created a PFSense Firewall within VirtualBox with a Linux client to showcase my knowledge on networking. In this project I've created an "Office" VLAN within the Pfsense admin portal that allows us to segement our "Office" Network from our "LAN" network. I created subnets for both the "Office" and the "LAN" network and used DHCP to create a pool of usable addresses for assignment of any devices attached to the respective port interface.
 
 </br>Firewall rules we also implemented to control the flow of traffic originating from either interfaces: LAN0, LAN1 as an added layer of security.
+</br>
+<h2 align="center">Youtube Video</h2>
+
+[![PFsense Lab](https://github.com/user-attachments/assets/40879dae-1af0-488c-b274-0ffb63288fcd)](https://www.youtube.com/watch?v=mIEBfNq9spo)
 
 ___
 
@@ -14,7 +17,7 @@ ___
 
 ![PFSense Lab - Network Toplogy v1](https://github.com/user-attachments/assets/60c931d5-32e7-4ffc-ab02-f19f76200bf1)
 
-NOTE: Both the PFSense Box and Linux Mint Client were virtualized using VirtualBox. In order to which from the "LAN" Network to the "Office" network it requires that we also change the adapter that is attached to our Linux Client: "Mint" from either: **LAN0 or ***LAN1.
+NOTE: Both the PFSense Box and Linux Mint Client were virtualized using VirtualBox. In order to switch from the "LAN" Network to the "Office" network it requires that we also change the adapter that is attached to our Linux Client: "Mint" from either: **LAN0 or ***LAN1.
 
 ![PFSense - Interface Assignments](https://github.com/user-attachments/assets/b3d9e417-ec79-462f-ad0f-c9981ed0fc17)
 
@@ -90,7 +93,7 @@ Adapter 3** : OFFICE (em1) | Ipv4 Configuration Type = Static | Enabled
 <h3>Network Security</h3>
 <p>Network are secured in the real world using zero-trust principles that are implemented into networks through segmentation, firewall rules, ACLs/VPNs, active threat detection/prevention, monitoring, etc... 
 
-In this Lab, I've created Firewall rules which restrict the flow of traffic from one Network to another; in our case it is the "Office" and "LAN" networks and vice versa. For Example, I don't want anyone within the "Office" network to be able to reach the PFSense Firewall console, a rule within PFSense was created to blocks any IPv4 traffic that originates from the "Office" subnet on port 443, 80 to the destination address: 192.168.1.1 (This Firewall) to be be blocked.</p>
+In this Lab, I've created Firewall rules which restrict the flow of traffic from one Network to another; in our case it is the "Office" and "LAN" networks and vice versa. For Example, I don't want anyone within the "Office" network to be able to reach the PFSense Firewall console, a rule within PFSense was created to blocks any IPv4 traffic that originates from the "Office" subnet on port 443 (HTTPS), 80 (HTTP) to the destination address: 192.168.1.1 (This Firewall) to be be blocked.</p>
 
 <h4>Office Firewall Rules</h4>
 
